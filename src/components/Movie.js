@@ -11,7 +11,7 @@ const Movie = ({ movieCard }) => {
   const poster = "https://image.tmdb.org/t/p/w500/" + movieCard.poster_path;
 
   return (
-    <Box p="5" maxW="250px" borderWidth="1px">
+    <Box p="4" maxW="300px" borderWidth="1px">
       <Image src={poster} />
       <Text>{movieCard.title}</Text>
       <Text>{movieCard.vote_average}</Text>

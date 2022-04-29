@@ -33,7 +33,6 @@ const Home = () => {
       .then((response) => setMovies(response.data.results));
   }, []);
 
-  console.log(movies);
 
   return (
     <Box marginTop={50} marginLeft={30} marginBottom={50}>

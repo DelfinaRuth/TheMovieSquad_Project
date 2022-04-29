@@ -8,6 +8,7 @@ const initialState = {
     user: null, //info del user
     isAuthenticated: false, //¿está logueado?
     toggleAuth: () => null,
+    movieSearch: [],
 };
 
 export const AuthContext = createContext(initialState)
@@ -19,15 +20,18 @@ const AuthContextProvider = ({ children }) => {
         user: null,
         isAuthenticated: false,
     });
+    const [movieSearch, setMovieSearch] = useState([])
 
-    const toggleAuth = (user) => {
+    const toggleAuth = (user, movie) => {
         setIsLoggedIn({
             user: user,
             isAuthenticated: !isLoggedIn.isAuthenticated,
-        });
+        }),
+        setMovieSearch(movie); // ver, ¿se hace en uno diferente? ¿en otro mismo archivo?
     };
 
-    const value = { isLoggedIn, toggleAuth };
+
+    const value = { isLoggedIn, toggleAuth, toggleAuth2, movieSearch};
 
     return (
         <AuthContext.Provider value={value}>

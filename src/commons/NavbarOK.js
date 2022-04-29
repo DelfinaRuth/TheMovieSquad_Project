@@ -1,5 +1,7 @@
-import { ReactNode } from "react";
+import { ReactNode, useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 import {
   Box,
   Flex,
@@ -22,10 +24,34 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, SearchIcon } from "@chakra-ui/icons";
 import { MdGroupWork } from "react-icons/md";
+import axios from "axios";
+import MovieSearch from "../components/MovieSearch";
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+  const userSearch = useContext(AuthContext);
+
+  const [movie, setMovieSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setMovieSearch(e.target.value);
+  };
+
+  const handleMovieSearch = (e) => {
+    e.preventDefault();
+
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/movie?api_key=7571866020be0fc96f4cbd335eaa5117&query=${movie}`
+      )
+      .then((res) => {
+        userSearch.toggleAuth2(res.data.results); //¿cómo usar múltiples contexts? esto no funciona
+      });
+  };
+
+  console.log(movieArray);
 
   return (
     <>
@@ -37,11 +63,16 @@ export default function Nav() {
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              <Input placeholder="Search a movie..." />
+              <Input
+                placeholder="Search a movie..."
+                onChange={handleSearch}
+                value={movie}
+              />
               <IconButton
                 colorScheme="blue"
                 aria-label="Search database"
                 icon={<SearchIcon />}
+                onClick={handleMovieSearch}
               />
               <Button onClick={toggleColorMode}>
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
