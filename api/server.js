@@ -31,12 +31,13 @@ passport.use(
         function (email, password, done) {
             User.findOne({ where: { email } })
                 .then(user => {
-                    //console.log(user);
                     if (!user) { 
+                        console.log("No existe el usuario");
                         return done(null, false);
                     }
                     user.hash(password, user.salt).then((hash) => {
                         if (hash !== user.password) {
+                            console.log("Contraseña incorrecta")
                             return done(null, false);
                         }
                         return done(null, user); //se autenticó

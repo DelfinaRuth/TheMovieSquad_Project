@@ -1,0 +1,15 @@
+const apiKey = "api_key=7571866020be0fc96f4cbd335eaa5117";
+const apiUrl = "https://api.themoviedb.org/3/";
+const imgSource = "https://image.tmdb.org/t/p/w500"; // (w300) --> size. Define wich fits the best.
+img --> posters property
+imgSource full example url --> https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg
+
+dato --> desestructurar movie {} y sacar de ahí la img path y demás variables que necesite 
+const {imgPath, title, etc} = movies
+así puedo configurar la estructura jsx metiendo la data q saco del mapeo de movies [].
+
+
+const apiKey = "/multi?api_key=7571866020be0fc96f4cbd335eaa5117";
+const apiUrl = "https://api.themoviedb.org/3/search";
+const imgSource = "https://image.tmdb.org/t/p/w500";
+const url = "https://api.themoviedb.org/3/search/multi?api_key=7571866020be0fc96f4cbd335eaa5117&page=1&include_adult=false&query="

@@ -22,7 +22,14 @@ router.post("/register", (req, res, next) => {
 //---------------------------------------------//
 //RUTA PARA LOGUEAR UN USER
 router.post("/login", passport.authenticate("local"), (req, res) => {
-  res.send(req.user)
+  console.log(req.body.email)
+  User.findOne({
+    where: { email: req.body.email },
+    attributes: {
+      exclude: ["password", "salt"],
+    },
+  }).then(user => {
+    res.send(user)})
 })
 
 //-----------------------------------------//

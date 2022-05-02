@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Routes, Route, useNavigate } from "react-router";
-import { AuthContext } from "../contexts/AuthContext";
 import MovieSearch from "./MovieSearch";
 import Movie from "./Movie";
 import {
@@ -21,8 +20,6 @@ const Home = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState([]);
   const [movies, setMovies] = useState([]);
-  const userLog = useContext(AuthContext);
-  const { toggleAuth, isLoggedIn, isAuthenticated } = userLog;
 
   useEffect(() => {
     //query to search movies for popularity 
