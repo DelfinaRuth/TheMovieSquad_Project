@@ -15,74 +15,6 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-// const Login = () => {
-//   const [email, setEmail] = useState();
-//   const [password, setPassword] = useState();
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-
-//   const handleEmailChange = (e) => {
-//     setEmail(e.target.value);
-//   };
-
-//   const handlePasswordChange = (e) => {
-//     setPassword(e.target.value);
-//   };
-
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-
-//     dispatch(
-//       userLogin({
-//         email: email,
-//         password: password,
-//       })
-//     )
-//       .then((res) => {
-//         alert("welcome, " + res.payload.email);
-//         navigate("/");
-//       })
-//       .catch((err) => {
-//         console.log(err)
-//         alert("Try again...");
-//       })
-//   };
-
-//   return (
-//     <div>
-//       <h3>Welcome back!</h3>
-//       <p>Enter your email and password</p>
-//       <form onSubmit={handleLogin}>
-//         <div class="form-group">
-//           <input
-//             onChange={handleEmailChange}
-//             value={email}
-//             type="email"
-//             class="form-control"
-//             id="exampleInputEmail1"
-//             aria-describedby="emailHelp"
-//             placeholder="Enter email"
-//           />
-//         </div>
-//         <br />
-//         <div class="form-group">
-//           <input
-//             onChange={handlePasswordChange}
-//             value={password}
-//             type="password"
-//             class="form-control"
-//             id="exampleInputPassword1"
-//             placeholder="Password"
-//           />
-//         </div>
-//         <br />
-//         <button type="submit" class="btn btn-primary">
-//           Submit
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
 
 export default function Login() {
 
@@ -114,7 +46,7 @@ export default function Login() {
         })
         .catch((err) => {
           console.log(err)
-          alert("Try again...");
+          alert("Hmm, that didn't work out. Please, try again...");
         })
     };
 
@@ -132,14 +64,6 @@ export default function Login() {
             <Input type="password" onChange={handlePasswordChange} value={password} type="password"/>
           </FormControl>
           <Stack spacing={6}>
-            <Stack
-              direction={{ base: "column", sm: "row" }}
-              align={"start"}
-              justify={"space-between"}
-            >
-              <Checkbox>Remember me</Checkbox>
-              <Link color={"blue.500"}>Forgot password?</Link>
-            </Stack>
             <Button colorScheme={"blue"} variant={"solid"} onClick={handleLogin}>
               Sign in
             </Button>
@@ -150,8 +74,7 @@ export default function Login() {
         <Image
           alt={"Login Image"}
           objectFit={"cover"}
-          src={
-            "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
+          src={"https://cdn.pixabay.com/photo/2020/06/15/15/34/science-5302286_960_720.jpg"
           }
         />
       </Flex>
