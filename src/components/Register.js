@@ -1,9 +1,22 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { userRegister } from "../store/user";
+import {
+  Button,
+  Checkbox,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Link,
+  Stack,
+  Image,
+} from "@chakra-ui/react";
 
-const Register = () => {
+export default function Register() {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -28,8 +41,7 @@ const Register = () => {
         password: password,
       })
     )
-      .then((data) => {
-        console.log(data);
+      .then((res) => {
         alert("Thanks for signing up to TMDB 🎬");
         navigate("/");
       })
@@ -41,40 +53,34 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h1>REGISTER</h1>
-      <form onSubmit={handleSubmit}>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email</label>
-          <input
-            onChange={handleEmailChange}
-            value={email}
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            name="email"
-          />
-        </div>
-        <br />
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            onChange={handlePasswordChange}
-            value={password}
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            name="password"
-          />
-        </div>
-        <br />
-        <button type="submit" class="btn btn-primary">
-          Sign up
-        </button>
-      </form>
-    </div>
+    <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
+      <Flex p={8} flex={1} align={"center"} justify={"center"}>
+        <Stack spacing={4} w={"full"} maxW={"md"}>
+          <Heading fontSize={"2xl"}>Sign up</Heading>
+          <FormControl id="email">
+            <FormLabel>Email address</FormLabel>
+            <Input onChange={handleEmailChange} value={email} type="email"/>
+          </FormControl>
+          <FormControl id="password">
+            <FormLabel>Password</FormLabel>
+            <Input type="password" onChange={handlePasswordChange} value={password} type="password"/>
+          </FormControl>
+          <Stack spacing={6}>
+            <Button colorScheme={"blue"} variant={"solid"} onClick={handleSubmit}>
+              Sign up
+            </Button>
+          </Stack>
+        </Stack>
+      </Flex>
+      <Flex flex={1}>
+        <Image
+          alt={"Login Image"}
+          objectFit={"cover"}
+          src={"https://cdn.pixabay.com/photo/2020/06/15/15/34/science-5302286_960_720.jpg"
+          }
+        />
+      </Flex>
+    </Stack>
   );
 };
 
-export default Register;

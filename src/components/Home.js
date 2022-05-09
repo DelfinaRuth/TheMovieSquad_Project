@@ -33,7 +33,8 @@ const Home = () => {
 
   return (
     <Box marginTop={50} marginLeft={30} marginBottom={50}>
-      <Heading marginBottom={30}>The Movie Squad</Heading>
+      <Heading as="h1" size="2xl" marginBottom={30}>The Movie Squad</Heading>
+      <Heading as="h3" size="lg" isTruncated marginBottom={25}>Popular movies</Heading>
       <Wrap>
         {movies.map((movie) => (
           <Movie key={movie.id} movieCard={movie} />
