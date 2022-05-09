@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { Box, Heading, Wrap } from "@chakra-ui/react";
 import Movie from "./Movie";
+import MovieWrap from "./MovieWrap"
 import { useSelector } from "react-redux";
 import axios from "axios";
 
@@ -28,11 +29,7 @@ const MovieSearch = () => {
         <Heading as="h3" size="lg" isTruncated marginBottom={25}>
           {movie}
         </Heading>
-        <Wrap>
-          {movieSearch.map((movie) => (
-            <Movie key={movie.id} movieCard={movie} />
-          ))}
-        </Wrap>
+        <MovieWrap movieSearch={movieSearch} />
       </Box>
   );
 };
